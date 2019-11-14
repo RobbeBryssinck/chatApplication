@@ -5,7 +5,6 @@ import optparse
 from threading import *
 
 screenLock = Semaphore(value=5)
-global logs
 
 def createServer(port):
 
@@ -25,11 +24,26 @@ def createServer(port):
 
 def runServer(sck, conn, client, logs):
 
-	
-	data = conn.recv(1024)
-	message = client[0] + ': ' + data.decode() + '\n'
-	print(message)
-	logs.write(message)
+	# receive data
+	while True:
+		try:
+			data = conn.recv(1024)
+			if data != b'/dc':
+				screenLock.acquire()
+				message = client[0] + ': ' + data.decode() + '\n'
+				print(message)
+				logs.write(message)
+				screenLock.release()
+			else:
+				break
+
+		except:
+			screenLock.acquire()
+			message = client[0] + " closed the connection.\n"
+			logs.write(message)
+			screenLock.release()
+			print(message)
+			break
 
 	conn.close()
 
@@ -47,18 +61,25 @@ def main():
 		exit(0)
 
 	# create server logs
-	if not os.path.exists('./logs.txt'):
-		os.mknod('./logs.txt')
-	logs = open('./logs.txt', 'w')
+	logs = open('./logs.txt', 'a+')
 
 	# create the socket
 	sck = createServer(port)
 
-	# run the server
 	while True:
 
-		# wait for connection and start thread
+		# wait for connection
 		conn, client = sck.accept()
+
+		# log connection
+		screenLock.acquire()
+		message = client[0] + " connected.\n"
+		print(message)
+		logs.write(message)
+		screenLock.release()
+		
+		# start thread
+		runServer(sck, conn, client, logs)
 		t = Thread(target=runServer, args=(sck, conn, client, logs))
 		t.start()
 
