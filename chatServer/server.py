@@ -4,8 +4,6 @@ import os
 import optparse
 from threading import *
 
-screenLock = Semaphore(value=5)
-global logs
 
 def createServer(port):
 
@@ -13,7 +11,7 @@ def createServer(port):
 	sck = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 	# bind the socket to the port
-	server_address = ('localhost', port)
+	server_address = ('192.168.226.129', port)
 	print("starting up on {} port {}".format(*server_address))
 	sck.bind(server_address)
 
@@ -23,13 +21,27 @@ def createServer(port):
 	return sck
 
 
-def runServer(sck, conn, client, logs):
+def clientHandler(sck, conn, client, logs):
 
-	
-	data = conn.recv(1024)
-	message = client[0] + ': ' + data.decode() + '\n'
-	print(message)
-	logs.write(message)
+	# receive data
+	while True:
+		try:
+			data = conn.recv(1024)
+			if data != b'/dc':
+				message = client[0] + ': ' + data.decode() + '\n'
+				print(message)
+				logs.write(message)
+			else:
+				message = client[0] + " closed the connection.\n"
+				logs.write(message)
+				print(message)
+				break
+
+		except:
+			message = client[0] + " closed the connection.\n"
+			logs.write(message)
+			print(message)
+			break
 
 	conn.close()
 
@@ -47,19 +59,23 @@ def main():
 		exit(0)
 
 	# create server logs
-	if not os.path.exists('./logs.txt'):
-		os.mknod('./logs.txt')
-	logs = open('./logs.txt', 'w')
+	logs = open('./logs.txt', 'a+')
 
 	# create the socket
 	sck = createServer(port)
 
-	# run the server
 	while True:
 
-		# wait for connection and start thread
+		# wait for connection
 		conn, client = sck.accept()
-		t = Thread(target=runServer, args=(sck, conn, client, logs))
+
+		# log connection
+		message = client[0] + " connected.\n"
+		print(message)
+		logs.write(message)
+		
+		# start thread
+		t = Thread(target=clientHandler, args=(sck, conn, client, logs))
 		t.start()
 
 
