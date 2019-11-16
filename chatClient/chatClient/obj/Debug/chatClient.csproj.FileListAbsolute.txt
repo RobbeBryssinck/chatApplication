@@ -1,0 +1,9 @@
+C:\Users\Robbe\Source\Repos\RobbeBryssinck\chatApplication\chatClient\chatClient\bin\Debug\chatClient.exe.config
+C:\Users\Robbe\Source\Repos\RobbeBryssinck\chatApplication\chatClient\chatClient\bin\Debug\chatClient.exe
+C:\Users\Robbe\Source\Repos\RobbeBryssinck\chatApplication\chatClient\chatClient\bin\Debug\chatClient.pdb
+C:\Users\Robbe\Source\Repos\RobbeBryssinck\chatApplication\chatClient\chatClient\obj\Debug\chatClient.csprojAssemblyReference.cache
+C:\Users\Robbe\Source\Repos\RobbeBryssinck\chatApplication\chatClient\chatClient\obj\Debug\chatClient.Form1.resources
+C:\Users\Robbe\Source\Repos\RobbeBryssinck\chatApplication\chatClient\chatClient\obj\Debug\chatClient.Properties.Resources.resources
+C:\Users\Robbe\Source\Repos\RobbeBryssinck\chatApplication\chatClient\chatClient\obj\Debug\chatClient.csproj.GenerateResource.cache
+C:\Users\Robbe\Source\Repos\RobbeBryssinck\chatApplication\chatClient\chatClient\obj\Debug\chatClient.exe
+C:\Users\Robbe\Source\Repos\RobbeBryssinck\chatApplication\chatClient\chatClient\obj\Debug\chatClient.pdb
