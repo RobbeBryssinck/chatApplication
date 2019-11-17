@@ -32,17 +32,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbMessage = new System.Windows.Forms.TextBox();
             this.btSend = new System.Windows.Forms.Button();
+            this.tbMessage = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.tbPort = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbIP = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btConnect = new System.Windows.Forms.Button();
+            this.tbClientIP = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbClientPort = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btDisconnect = new System.Windows.Forms.Button();
+            this.btConnect = new System.Windows.Forms.Button();
+            this.tbServerIP = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbServerPort = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +92,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chat";
             // 
+            // btSend
+            // 
+            this.btSend.Enabled = false;
+            this.btSend.Location = new System.Drawing.Point(191, 404);
+            this.btSend.Name = "btSend";
+            this.btSend.Size = new System.Drawing.Size(162, 42);
+            this.btSend.TabIndex = 4;
+            this.btSend.Text = "Send message";
+            this.btSend.UseVisualStyleBackColor = true;
+            this.btSend.Click += new System.EventHandler(this.btSend_Click);
+            // 
             // tbMessage
             // 
             this.tbMessage.Location = new System.Drawing.Point(6, 365);
@@ -95,22 +110,17 @@
             this.tbMessage.Size = new System.Drawing.Size(525, 22);
             this.tbMessage.TabIndex = 3;
             // 
-            // btSend
-            // 
-            this.btSend.Location = new System.Drawing.Point(191, 404);
-            this.btSend.Name = "btSend";
-            this.btSend.Size = new System.Drawing.Size(162, 42);
-            this.btSend.TabIndex = 4;
-            this.btSend.Text = "Send message";
-            this.btSend.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.tbClientIP);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.tbClientPort);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.btDisconnect);
             this.groupBox2.Controls.Add(this.btConnect);
-            this.groupBox2.Controls.Add(this.tbIP);
+            this.groupBox2.Controls.Add(this.tbServerIP);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.tbPort);
+            this.groupBox2.Controls.Add(this.tbServerPort);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.tbName);
             this.groupBox2.Controls.Add(this.label3);
@@ -121,14 +131,89 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Connection";
             // 
-            // label3
+            // tbClientIP
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Name:";
+            this.tbClientIP.Location = new System.Drawing.Point(6, 90);
+            this.tbClientIP.Name = "tbClientIP";
+            this.tbClientIP.Size = new System.Drawing.Size(206, 22);
+            this.tbClientIP.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 70);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 17);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Client IP:";
+            // 
+            // tbClientPort
+            // 
+            this.tbClientPort.Location = new System.Drawing.Point(6, 135);
+            this.tbClientPort.Name = "tbClientPort";
+            this.tbClientPort.Size = new System.Drawing.Size(206, 22);
+            this.tbClientPort.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 115);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 17);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Client port:";
+            // 
+            // btDisconnect
+            // 
+            this.btDisconnect.Location = new System.Drawing.Point(6, 383);
+            this.btDisconnect.Name = "btDisconnect";
+            this.btDisconnect.Size = new System.Drawing.Size(206, 63);
+            this.btDisconnect.TabIndex = 11;
+            this.btDisconnect.Text = "Disconnect";
+            this.btDisconnect.UseVisualStyleBackColor = true;
+            this.btDisconnect.Click += new System.EventHandler(this.btDisconnect_Click);
+            // 
+            // btConnect
+            // 
+            this.btConnect.Location = new System.Drawing.Point(6, 299);
+            this.btConnect.Name = "btConnect";
+            this.btConnect.Size = new System.Drawing.Size(206, 63);
+            this.btConnect.TabIndex = 5;
+            this.btConnect.Text = "Connect";
+            this.btConnect.UseVisualStyleBackColor = true;
+            this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
+            // 
+            // tbServerIP
+            // 
+            this.tbServerIP.Location = new System.Drawing.Point(6, 198);
+            this.tbServerIP.Name = "tbServerIP";
+            this.tbServerIP.Size = new System.Drawing.Size(206, 22);
+            this.tbServerIP.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 178);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 17);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Server IP:";
+            // 
+            // tbServerPort
+            // 
+            this.tbServerPort.Location = new System.Drawing.Point(6, 243);
+            this.tbServerPort.Name = "tbServerPort";
+            this.tbServerPort.Size = new System.Drawing.Size(206, 22);
+            this.tbServerPort.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 223);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Server port:";
             // 
             // tbName
             // 
@@ -137,55 +222,14 @@
             this.tbName.Size = new System.Drawing.Size(206, 22);
             this.tbName.TabIndex = 6;
             // 
-            // tbPort
+            // label3
             // 
-            this.tbPort.Location = new System.Drawing.Point(6, 157);
-            this.tbPort.Name = "tbPort";
-            this.tbPort.Size = new System.Drawing.Size(206, 22);
-            this.tbPort.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 137);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Port:";
-            // 
-            // tbIP
-            // 
-            this.tbIP.Location = new System.Drawing.Point(6, 97);
-            this.tbIP.Name = "tbIP";
-            this.tbIP.Size = new System.Drawing.Size(206, 22);
-            this.tbIP.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 77);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 17);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "IP-address:";
-            // 
-            // btConnect
-            // 
-            this.btConnect.Location = new System.Drawing.Point(6, 201);
-            this.btConnect.Name = "btConnect";
-            this.btConnect.Size = new System.Drawing.Size(206, 63);
-            this.btConnect.TabIndex = 5;
-            this.btConnect.Text = "Connect";
-            this.btConnect.UseVisualStyleBackColor = true;
-            // 
-            // btDisconnect
-            // 
-            this.btDisconnect.Location = new System.Drawing.Point(6, 299);
-            this.btDisconnect.Name = "btDisconnect";
-            this.btDisconnect.Size = new System.Drawing.Size(206, 63);
-            this.btDisconnect.TabIndex = 11;
-            this.btDisconnect.Text = "Disconnect";
-            this.btDisconnect.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Name:";
             // 
             // Form1
             // 
@@ -215,12 +259,16 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btDisconnect;
         private System.Windows.Forms.Button btConnect;
-        private System.Windows.Forms.TextBox tbIP;
+        private System.Windows.Forms.TextBox tbServerIP;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbPort;
+        private System.Windows.Forms.TextBox tbServerPort;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbClientIP;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbClientPort;
+        private System.Windows.Forms.Label label7;
     }
 }
 
