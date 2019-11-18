@@ -5,13 +5,13 @@ import optparse
 from threading import *
 
 
-def createServer(port):
+def createServer(ip, port):
 
 	# create a TCP socket
 	sck = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 	# bind the socket to the port
-	server_address = ('192.168.226.129', port)
+	server_address = (ip, port)
 	print("starting up on {} port {}".format(*server_address))
 	sck.bind(server_address)
 
@@ -51,17 +51,19 @@ def updateClients(message):
 def main():
 
 	# option to set port when launching the server
-	parser = optparse.OptionParser("Usage: python3 server.py -p <server port>")
-	parser.add_option('-p', dest='port', type='int', help="specify target port")
+	parser = optparse.OptionParser("Usage: python3 server.py -h <server ip> -p <server port>")
+	parser.add_option('-p', dest='port', type='int', help="specify server port")
+	parser.add_option('-h', dest='ip', type='string', help="specify server ip")
 	(options, args) = parser.parse_args()
 	port = options.port
+	ip = options.ip
 	
 	if port == None:
 		print(parser.usage)
 		exit(0)
 
 	logs = open('./logs.txt', 'a+')
-	sck = createServer(port)
+	sck = createServer(ip, port)
 	
 
 	while True:
