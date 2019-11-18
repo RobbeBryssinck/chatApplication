@@ -23,16 +23,19 @@ def createServer(port):
 
 def clientHandler(sck, conn, client, logs):
 
+	# initialise user
+	name = conn.recv(2014)
+
 	# receive data
 	while True:
 		try:
 			data = conn.recv(1024)
-			message = client[0] + ': ' + data.decode() + '\n'
+			message = name.decode() + ': ' + data.decode() + '\n'
 			print(message)
-			updateClients(message, conn)
+			updateClients(message)
 			logs.write(message)
 		except:
-			message = client[0] + " closed the connection.\n"
+			message = name.decode() + " closed the connection.\n"
 			logs.write(message)
 			print(message)
 			break
@@ -40,7 +43,7 @@ def clientHandler(sck, conn, client, logs):
 	conn.close()
 
 
-def updateClients(message, conn):
+def updateClients(message):
 	for client in clients:
 		client.send(bytes(message, 'ASCII'))
 
