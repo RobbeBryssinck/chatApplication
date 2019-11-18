@@ -74,7 +74,14 @@ namespace chatClient
 
         private void serverHandler()
         {
+            // initialise user
+            byte[] sendBuffer = new byte[1024];
+            sendBuffer = Encoding.ASCII.GetBytes(tbName.Text);
+            sck.SendTo(sendBuffer, sendBuffer.Length, SocketFlags.None, serverEP);
+            
             string message;
+
+            // listening loop to update chat history
             while (connected)
             {
                 try
