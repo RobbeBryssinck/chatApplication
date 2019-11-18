@@ -60,12 +60,15 @@ namespace chatClient
             remote = (EndPoint)(serverEP);
 
             // enable send button and state
+            btConnect.Enabled = false;
+            btDisconnect.Enabled = true;
             btSend.Enabled = true;
             connected = true;
             
             // start a listening thread
             Thread thread = new Thread(serverHandler);
             thread.IsBackground = true;
+            Control.CheckForIllegalCrossThreadCalls = false;
             thread.Start();
         }
 
@@ -76,9 +79,9 @@ namespace chatClient
             {
                 try
                 {
-                    byte[] buffer = new byte[1024];
-                    int recv = sck.ReceiveFrom(buffer, ref remote);
-                    message = Encoding.ASCII.GetString(buffer, 0, recv);
+                    byte[] receiveBuffer = new byte[1024];
+                    int recv = sck.ReceiveFrom(receiveBuffer, ref remote);
+                    message = Encoding.ASCII.GetString(receiveBuffer, 0, recv);
                     libChat.Items.Add(message);
                 }
                 catch (SocketException) { }
@@ -90,11 +93,15 @@ namespace chatClient
             connected = false;
             sck.Close();
             btSend.Enabled = false;
+            btConnect.Enabled = true;
+            btDisconnect.Enabled = false;
         }
 
         private void sendMessage()
         {
-
+            byte[] sendBuffer = new byte[1024];
+            sendBuffer = Encoding.ASCII.GetBytes(tbMessage.Text);
+            sck.SendTo(sendBuffer, sendBuffer.Length, SocketFlags.None, serverEP);
         }
     }
 }

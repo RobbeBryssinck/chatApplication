@@ -165,6 +165,7 @@
             // 
             // btDisconnect
             // 
+            this.btDisconnect.Enabled = false;
             this.btDisconnect.Location = new System.Drawing.Point(6, 383);
             this.btDisconnect.Name = "btDisconnect";
             this.btDisconnect.Size = new System.Drawing.Size(206, 63);
