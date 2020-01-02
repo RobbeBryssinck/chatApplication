@@ -17,7 +17,6 @@ namespace chatClient
     {
         Socket sck;
         IPEndPoint serverEP;
-        //IPEndPoint clientEP;
         EndPoint remote;
         bool connected = false;
 
@@ -99,8 +98,12 @@ namespace chatClient
 
         private void sendMessage()
         {
-            byte[] sendBuffer = Encoding.ASCII.GetBytes(tbMessage.Text);
-            sck.SendTo(sendBuffer, sendBuffer.Length, SocketFlags.None, serverEP);
+            if (tbMessage.Text != "")
+            {
+                byte[] sendBuffer = Encoding.ASCII.GetBytes(tbMessage.Text);
+                sck.SendTo(sendBuffer, sendBuffer.Length, SocketFlags.None, serverEP);
+                tbMessage.Text = "";
+            }
         }
     }
 }
