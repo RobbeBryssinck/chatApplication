@@ -35,10 +35,6 @@
             this.btSend = new System.Windows.Forms.Button();
             this.tbMessage = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tbClientIP = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbClientPort = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.btDisconnect = new System.Windows.Forms.Button();
             this.btConnect = new System.Windows.Forms.Button();
             this.tbServerIP = new System.Windows.Forms.TextBox();
@@ -112,10 +108,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tbClientIP);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.tbClientPort);
-            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.btDisconnect);
             this.groupBox2.Controls.Add(this.btConnect);
             this.groupBox2.Controls.Add(this.tbServerIP);
@@ -130,38 +122,6 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Connection";
-            // 
-            // tbClientIP
-            // 
-            this.tbClientIP.Location = new System.Drawing.Point(6, 90);
-            this.tbClientIP.Name = "tbClientIP";
-            this.tbClientIP.Size = new System.Drawing.Size(206, 22);
-            this.tbClientIP.TabIndex = 15;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 70);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 17);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Client IP:";
-            // 
-            // tbClientPort
-            // 
-            this.tbClientPort.Location = new System.Drawing.Point(6, 135);
-            this.tbClientPort.Name = "tbClientPort";
-            this.tbClientPort.Size = new System.Drawing.Size(206, 22);
-            this.tbClientPort.TabIndex = 13;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 115);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 17);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Client port:";
             // 
             // btDisconnect
             // 
@@ -186,7 +146,7 @@
             // 
             // tbServerIP
             // 
-            this.tbServerIP.Location = new System.Drawing.Point(6, 198);
+            this.tbServerIP.Location = new System.Drawing.Point(6, 144);
             this.tbServerIP.Name = "tbServerIP";
             this.tbServerIP.Size = new System.Drawing.Size(206, 22);
             this.tbServerIP.TabIndex = 10;
@@ -194,7 +154,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 178);
+            this.label5.Location = new System.Drawing.Point(3, 124);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 17);
             this.label5.TabIndex = 9;
@@ -202,7 +162,7 @@
             // 
             // tbServerPort
             // 
-            this.tbServerPort.Location = new System.Drawing.Point(6, 243);
+            this.tbServerPort.Location = new System.Drawing.Point(6, 189);
             this.tbServerPort.Name = "tbServerPort";
             this.tbServerPort.Size = new System.Drawing.Size(206, 22);
             this.tbServerPort.TabIndex = 8;
@@ -210,7 +170,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 223);
+            this.label4.Location = new System.Drawing.Point(3, 169);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 17);
             this.label4.TabIndex = 7;
@@ -266,10 +226,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbClientIP;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbClientPort;
-        private System.Windows.Forms.Label label7;
     }
 }
 

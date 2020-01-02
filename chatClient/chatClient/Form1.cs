@@ -17,7 +17,7 @@ namespace chatClient
     {
         Socket sck;
         IPEndPoint serverEP;
-        IPEndPoint clientEP;
+        //IPEndPoint clientEP;
         EndPoint remote;
         bool connected = false;
 
@@ -46,12 +46,6 @@ namespace chatClient
             // create socket
             sck = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            // bind socket
-            string clientIP = tbClientIP.Text;
-            int clientPort = int.Parse(tbClientPort.Text);
-            clientEP = new IPEndPoint(IPAddress.Parse(clientIP), clientPort);
-            sck.Bind(clientEP);
-
             // make connection to the server
             string serverIP = tbServerIP.Text;
             int serverPort = int.Parse(tbServerPort.Text);
@@ -75,8 +69,7 @@ namespace chatClient
         private void serverHandler()
         {
             // initialise user
-            byte[] sendBuffer = new byte[1024];
-            sendBuffer = Encoding.ASCII.GetBytes(tbName.Text);
+            byte[] sendBuffer = Encoding.ASCII.GetBytes(tbName.Text);
             sck.SendTo(sendBuffer, sendBuffer.Length, SocketFlags.None, serverEP);
             
             string message;
@@ -106,8 +99,7 @@ namespace chatClient
 
         private void sendMessage()
         {
-            byte[] sendBuffer = new byte[1024];
-            sendBuffer = Encoding.ASCII.GetBytes(tbMessage.Text);
+            byte[] sendBuffer = Encoding.ASCII.GetBytes(tbMessage.Text);
             sck.SendTo(sendBuffer, sendBuffer.Length, SocketFlags.None, serverEP);
         }
     }
